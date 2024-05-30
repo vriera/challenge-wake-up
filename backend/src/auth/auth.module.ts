@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { ManagerModule } from '../manager/manager.module';
@@ -6,11 +6,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { LocalStrategy } from './strategies/local.strategy';
+import { JwtAuthGuard, OnlyManagerGuard } from './guard';
+import { LocalStrategy } from './strategies/local.strategy copy';
+import { LocalTokenStrategy } from './strategies/local-waiter.strategy';
 
 @Module({
   imports: [
-    ManagerModule ,
+    forwardRef( () => ManagerModule) ,
     JwtModule.register({
         global: true,
         secret: jwtConstants.secret,
@@ -19,15 +21,14 @@ import { LocalStrategy } from './strategies/local.strategy';
     PassportModule,
 ],
   providers: [
-    AuthService , 
-    // {
-    //   provide: APP_GUARD,
-    //   useClass: AuthGuard,
-    // },
+    AuthService, 
     JwtStrategy,
-    LocalStrategy
+    LocalStrategy,
+    LocalTokenStrategy,
+    OnlyManagerGuard,
+    JwtAuthGuard
   ],
-  exports: [PassportModule , JwtModule],
+  exports: [PassportModule , JwtModule , OnlyManagerGuard , JwtAuthGuard ],
   controllers: [AuthController]
 })
 export class AuthModule {}

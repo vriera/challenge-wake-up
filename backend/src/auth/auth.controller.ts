@@ -1,7 +1,9 @@
-import { Body, Controller, Post, HttpCode, HttpStatus, UseGuards , Request, Get, Param} from '@nestjs/common';
+import { Body, Controller, Post, HttpCode, HttpStatus, UseGuards , Request, Get, Param, Req} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { JwtAuthGuard, LocalGuard, OnlyManagerGuard } from './guard';
-import { AuthManagerDto } from './dto/AuthManagerDto';
+import {  AuthWaiterDto } from './dto/auth-waiter.dto';
+import { AuthManagerDto } from './dto/auth-manager.dto';
+import { LocalTokenGuard } from './guard/local-token.guard';
 
 @Controller('auth')
 export class AuthController {
@@ -11,10 +13,16 @@ export class AuthController {
     @HttpCode(HttpStatus.OK)
     @UseGuards(LocalGuard)
     @Post('login/manager')
-    signIn(@Body() dto: AuthManagerDto) {
-        return this.authService.signIn(dto.username ,dto.password );
+    signIn(@Req() req , @Body() dto: AuthManagerDto) {
+        return req.user
     }
 
+    @HttpCode(HttpStatus.OK)
+    @UseGuards(LocalTokenGuard)
+    @Post('login/waiter')
+    logInWaiter(@Req() req , @Body() dto: AuthWaiterDto) {
+        return req.user;
+    }
 
     @Get('manager/:id')
     @UseGuards(JwtAuthGuard , OnlyManagerGuard)
