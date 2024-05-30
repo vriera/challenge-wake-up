@@ -6,7 +6,9 @@ import { MenuItem } from './entity/menu-item.entity';
 import { Paginated } from 'src/commons/pagination.interface';
 import { PatchMenuItemDTO } from './dto/patch-menu-item.dto';
 import { PaginationDTO } from 'src/commons/pagination.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('menu')
 @Controller('menu')
 export class MenuController {
     constructor(private menuService: MenuService) {}

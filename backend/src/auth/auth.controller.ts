@@ -4,7 +4,9 @@ import { JwtAuthGuard, LocalGuard, OnlyManagerGuard } from './guard';
 import {  AuthWaiterDto } from './dto/auth-waiter.dto';
 import { AuthManagerDto } from './dto/auth-manager.dto';
 import { LocalTokenGuard } from './guard/local-token.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
 

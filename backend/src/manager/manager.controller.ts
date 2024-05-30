@@ -4,7 +4,9 @@ import { ManagerDTO } from './dto/manager.dto';
 import { JwtAuthGuard, OnlyManagerGuard } from '../auth/guard';
 import { CreateWaiterDTO } from './dto/create-waiter.dto';
 import { PaginationDTO } from 'src/commons/pagination.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('manager')
 @Controller('manager')
 export class ManagerController {
 

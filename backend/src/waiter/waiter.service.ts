@@ -1,7 +1,8 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { Waiter } from './entity/waiter.entity';
 import { Repository } from 'typeorm';
-import * as constants from '../constants'
+import * as constants from '../constants';
+
 import { WaiterDto } from './dto/waiter.dto';
 import { Manager } from '../manager/entity/manager.entity';
 import { Paginated } from 'src/commons/pagination.interface';
