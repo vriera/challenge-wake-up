@@ -1,0 +1,41 @@
+// Import Bootstrap functions and variables
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+
+// Override color variables
+$primary: #c79a12;    // Change to your preferred primary color
+$secondary: #7d5034;  // Change to your preferred secondary color
+$success: #28a745;    // Change to your preferred success color
+$info: #a0b817;       // Change to your preferred info color
+$warning: #ffc107;    // Change to your preferred warning color
+$danger: #dc3545;     // Change to your preferred danger color
+$light: #6e4537;      // Change to your preferred light color
+$dark: #343a40;       // Change to your preferred dark color
+
+$theme-colors: (
+  "primary": #c79a12,
+  "danger": #ff4136,
+  "secondary": #7d5034,
+  "info":  #a0b817,
+  "warning": #ffc107,
+  "light": #6e4537
+);
+// Import the rest of Bootstrap
+
+// Link colors
+$link-color: darken($primary, 5%);
+$link-hover-color: darken($primary, 15%);
+
+// Increased specificity for nav-pills customization
+html .nav-pills .nav-link {
+  color: $link-color;
+  &:hover {
+    color: $link-hover-color;
+  }
+}
+
+html .nav-pills .nav-link.active {
+  color: $white;
+  background-color: $primary;
+}
+@import "node_modules/bootstrap/scss/bootstrap";

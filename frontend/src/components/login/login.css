@@ -1,0 +1,61 @@
+/* ---------- SIGN IN ---------- */
+.sign-in__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 56px);
+  }
+  .margin-auto{
+    margin:auto;
+  }
+  .card-img-custom {
+    width: 100%; /* ensure it fills the card width */
+    max-height: 200px; /* fixed height */
+    object-fit: contain; /* this prevents the image from stretching or squashing */
+    background-color: transparent;
+  }
+  .custom-background {
+    background-color: #f0f0f0c3 !important; /* Replace with your desired background color */
+  }
+  .sign-in__backdrop {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+  .clickable-card {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clickable-card:hover {
+    transform: translateY(-5px); /* Lift the card up slightly */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5) !important; /* Increase the shadow */
+}
+  .sign-in__wrapper form {
+    /* height: calc(100vh - 56px); */
+    width: 24rem;
+    max-width: 90%;
+    z-index: 1;
+    animation: showSignInForm 1s;
+  }
+  
+  .sign-in__wrapper form img {
+    width: 4rem;
+  }
+  
+  @keyframes showSignInForm {
+    0%,
+    30% {
+      transform: translate(0, -200%);
+    }
+    70%,
+    90% {
+      transform: translate(0, 1rem);
+    }
+    80%,
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+  

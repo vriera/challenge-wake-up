@@ -1,0 +1,42 @@
+/* dark-theme.css */
+
+
+/* 
+:root {
+    --bs-body-bg: #c6c6c6;;
+    --bs-body-color: #ffffff;
+    --bs-link-color: #9dcaff;
+  } */
+  /* html { font-size: calc(1em + 1vw); } */
+
+.pattern-background {
+  min-height: 100vh;
+  background-image: url('/public/background.svg');
+  background-repeat: repeat;
+  background-size: 500px 500px;
+}
+
+body {
+  background-color:#6e4537;
+  color: #000000;
+}
+
+.navbar {
+  background-color: #292421;
+}
+
+.card {
+  background-color: #7d5034;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #e2bc4a;
+  border-color: #ffd65b;
+}
+
+.btn-primary:hover {
+  background-color: #a17c0f;
+  border-color: #a7811000;
+
+}
