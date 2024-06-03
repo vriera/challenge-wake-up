@@ -1,12 +1,13 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { MenuItem } from './entity/menu-item.entity';
 import * as constants from '../constants'
-import { IsNull, Not, Repository } from 'typeorm';
+import { FindOneOptions, IsNull, Not, Repository } from 'typeorm';
 import { MenuItemDTO } from './dto/menu-item.dto';
 import { ManagerService } from '../manager/manager.service';
 import { Paginated } from '../commons/pagination.interface';
 import { Manager } from '../manager/entity/manager.entity';
 import { PatchMenuItemDTO } from './dto/patch-menu-item.dto';
+import { MenuItemType } from './enums/menu-item-type.enum';
 
 @Injectable()
 export class MenuService {
@@ -52,13 +53,17 @@ async updateItem(id: number, dto: PatchMenuItemDTO): Promise<MenuItem> {
     return await this.menuRepository.save(menuItem);
 }
 
-    async getMenu(managerId: number , pageNumber: number ) : Promise<Paginated<MenuItem>>{
-      
+    async getMenu(managerId: number , pageNumber: number , filter?: MenuItemType ) : Promise<Paginated<MenuItem>>{
+        console.log(pageNumber)
         const manager = await this.managerService.findById(managerId);
         const take = constants.PAGE_DEFAULT_SIZE;
         const skip = pageNumber * take;
+        const where :any = {manager: manager}
+        if(filter)
+            where.type = filter;
+        console.log("where" , where)
         const [result , total ] = await this.menuRepository.findAndCount( {
-            where: {manager: manager}, order: { type: "ASC"},
+            where: where , order: { type: "ASC"},
             take,
             skip
         })

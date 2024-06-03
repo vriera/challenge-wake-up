@@ -17,7 +17,7 @@ export class AuthService {
       throw new UnauthorizedException();
     }
 
-    const payload : JWTPayload = { sub: user.id, username: user.username , type: UserType.MANAGER};
+    const payload : JWTPayload = { sub: user.id, username: user.username , type: UserType.MANAGER , restaurantId: user.id};
     return {
       access_token: await this.jwtService.signAsync(payload),
     };
@@ -33,7 +33,7 @@ export class AuthService {
       throw new UnauthorizedException();
 
    
-    const payload : JWTPayload = { sub: waiter.id, username: waiter.name , type: UserType.WAITER};
+    const payload : JWTPayload = { sub: waiter.id, username: waiter.name , type: UserType.WAITER , restaurantId: waiter.manager.id};
     console.log(payload)
     return {
       access_token: await this.jwtService.signAsync(payload),

@@ -5,10 +5,12 @@ import { QueryFailedError, Repository } from 'typeorm';
 import { Manager } from './entity/manager.entity';
 import { WaiterService } from '../waiter/waiter.service';
 import { Waiter } from '../waiter/entity/waiter.entity';
-import { WaiterDto } from 'src/waiter/dto/waiter.dto';
 import { CreateWaiterDTO } from './dto/create-waiter.dto';
 import {nanoid} from 'nanoid'
 import { Paginated } from 'src/commons/pagination.interface';
+
+
+
 @Injectable()
 export class ManagerService {
 

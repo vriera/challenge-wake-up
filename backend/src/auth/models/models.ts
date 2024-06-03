@@ -12,6 +12,7 @@ export interface AuthUserInfo {
 
 export interface JWTPayload {
     sub:number,
+    restaurantId:number,
     username:string,
     type: UserType
 }

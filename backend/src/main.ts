@@ -13,9 +13,10 @@ async function bootstrap() {
   .setVersion('1.0')
   .build();
   const document = SwaggerModule.createDocument(app, config); 
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
-  app.useGlobalFilters(new TypeOrmExceptionFilter());
-  app.useGlobalFilters(new AllExceptionsFilter());
+  // app.useGlobalFilters(new TypeOrmExceptionFilter());
+  // app.useGlobalFilters(new AllExceptionsFilter());
   SwaggerModule.setup('api', app, document);
   await app.listen(3000);
 }

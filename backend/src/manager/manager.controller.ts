@@ -3,7 +3,6 @@ import { ManagerService } from './manager.service';
 import { ManagerDTO } from './dto/manager.dto';
 import { JwtAuthGuard, OnlyManagerGuard } from '../auth/guard';
 import { CreateWaiterDTO } from './dto/create-waiter.dto';
-import { PaginationDTO } from 'src/commons/pagination.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('manager')
@@ -32,8 +31,10 @@ export class ManagerController {
 
     @Get(':id/waiter')
     @UseGuards(JwtAuthGuard , OnlyManagerGuard)
-    getWaiter(@Param("id") id:number , @Query("page") page:PaginationDTO ){
-        return this.managerService.findWaiters(id,  page?.page ?? 0);
+    getWaiter(@Param("id") id:number , @Query("page") page: number ){
+        if(page < 0)
+            page = 0;
+        return this.managerService.findWaiters(id,  page ?? 0);
     }
 
     @Get(':id/waiter/:waiterId')
