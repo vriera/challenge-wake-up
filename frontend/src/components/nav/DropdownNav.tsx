@@ -33,6 +33,7 @@ function DropdownNav() {
             
         <Dropdown.Menu>
           <Dropdown.Item href={`/home/manager/${auth.restaurantId}`}>Profile</Dropdown.Item>
+          <Dropdown.Item href={`/home/manager/${auth.restaurantId}/waiters`}>Manage Waiters</Dropdown.Item>
           <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>

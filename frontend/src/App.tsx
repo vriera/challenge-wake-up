@@ -18,15 +18,12 @@ const queryClient = new QueryClient()
 
 function App() {
   return (
-    <ThemeProvider
-    breakpoints={[ 'sm', 'xs', 'xxs']}
-  >
+
     <QueryClientProvider client={queryClient}>
         <AuthProvider>
           <AppRouter></AppRouter>
         </AuthProvider>
       </QueryClientProvider>
-    </ThemeProvider>
   );
 }
 

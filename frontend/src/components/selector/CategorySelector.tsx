@@ -19,7 +19,7 @@ const CategorySelector : React.FC<CategorySelectorParams> = ({ onSelectCategory 
     return <TabContainer>
             <Tabs defaultActiveKey="ALL"
         id="justify-tab-example"
-        className="mb-3 bg-secondary rounded"
+        className="mb-1 mb-md-0 bg-secondary rounded"
         variant="pills"
         onSelect={onSelect}
         justify

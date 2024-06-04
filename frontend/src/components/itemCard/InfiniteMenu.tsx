@@ -1,7 +1,7 @@
 
 import { useInfiniteQuery } from "@tanstack/react-query";
-import { getItemsInfinite, getQueryFnGetItemsInfinite } from "../api/menu";
-import { InfiniteItemResponse } from "../api/menu";
+import { getItemsInfinite, getQueryFnGetItemsInfinite } from "../../api/menu";
+import { InfiniteItemResponse } from "../../api/menu";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
 import Button from "react-bootstrap/Button";
@@ -9,12 +9,14 @@ import MenuItemCard from "./MenuItemCard";
 import Container from "react-bootstrap/Container";
 import styled from "styled-components";
 import MenuItemCardPlaceholer from "./MenuItemCardPlaceholder";
-import { MenuItemType } from "../models/menuItemType";
+import { MenuItemType } from "../../models/menuItemType";
 import Card from "react-bootstrap/Card"
+import useAuth from "../../hooks/useAuth";
 const ResponsiveContainer = styled(Container)`
-  @media (min-width: 992px) {  // This is for 'lg' breakpoint
-    max-width: 992px;
-  }
+width: 100%;
+@media (min-width: 992px) {  // This is for 'lg' breakpoint
+  max-width: 992px;
+}
 `;
 
 export type InfiniteMenuParams = {
@@ -25,6 +27,7 @@ export type InfiniteMenuParams = {
 
 const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
   
+    const {auth} = useAuth();
     const { ref, inView } = useInView();
 
     const { data, error, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
@@ -45,7 +48,7 @@ const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
         
     return    <>
      { status === "pending" && 
-        <ResponsiveContainer > 
+        <ResponsiveContainer  className="pb-2 pt-1 p-0 p-md-2 p-r-0"  > 
 
             {Array.from({ length: 10 }, (_, index) => (
                 <MenuItemCardPlaceholer></MenuItemCardPlaceholer>
@@ -57,7 +60,7 @@ const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
         {status !== "pending" && status !== "error" &&
             <div>
 
-                <ResponsiveContainer className="pb-2">
+                <ResponsiveContainer className="pb-2 pt-1 p-0 p-md-2 p-r-0" >
                     { !data || data.pages.every(page => page.data.length === 0) && <>
                     <Card className="m-3 shadow-lg">
                         <Card.Body>
@@ -73,7 +76,7 @@ const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
                         return <div key={page.currentPage}>
                             {
                                 page.data.map((item) => {
-                                    return <MenuItemCard item={item}></MenuItemCard>
+                                    return <MenuItemCard item={item} isManager={true} managerId={auth.id}  ></MenuItemCard>
 
 
                                 })

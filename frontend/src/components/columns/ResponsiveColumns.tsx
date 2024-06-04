@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
 import Row from "react-bootstrap/Row";
-import InfiniteMenu from '../InfiniteMenu';
+import InfiniteMenu from '../itemCard/InfiniteMenu';
 import CategorySelector from '../selector/CategorySelector';
 import "./columns.css";
 

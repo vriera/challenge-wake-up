@@ -25,13 +25,11 @@ export class WaiterService {
     }
 
     async updateToken( id: number , token:string) : Promise<Waiter>{
-        const exists = await this.waiterRepository.exists({where: {id}});
-        if(!exists)
+        const waiter = await this.waiterRepository.findOne({where: {id}});
+        if(!waiter)
             throw new NotFoundException('Waiter not found');
 
-        const waiter = new Waiter();        
         waiter.token = token;
-        waiter.id = id;
         
         return await this.waiterRepository.save(waiter);
     }
@@ -42,6 +40,7 @@ export class WaiterService {
         const skip = pageNumber * take;
         const [result , total ] = await this.waiterRepository.findAndCount( {
             where: {manager: manager},
+            order: {id: "DESC"},
             take,
             skip
         })

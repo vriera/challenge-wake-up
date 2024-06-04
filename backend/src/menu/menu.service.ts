@@ -63,7 +63,8 @@ async updateItem(id: number, dto: PatchMenuItemDTO): Promise<MenuItem> {
             where.type = filter;
         console.log("where" , where)
         const [result , total ] = await this.menuRepository.findAndCount( {
-            where: where , order: { type: "ASC"},
+            where: where , order: { type: "ASC" , id:"DESC"},
+
             take,
             skip
         })

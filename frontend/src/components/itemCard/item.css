@@ -1,0 +1,27 @@
+html .description-container {
+   
+    max-height: 100px; /* Set the maximum height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
+
+html .custom-card-body{
+  font-size: 0.8rem;
+}
+
+.p-r-0 {
+  padding-right: 0 !important;
+  margin-right: 0.5em !important;
+}
+
+html .p-r-1 {
+  padding-right: 1em !important;
+}
+html .m-r-min {
+  margin-right: 0.3em !important;
+}
+
+.trash-icon{
+  max-width: 2rem;
+  max-height: 2rem;
+  object-fit: fill;
+}

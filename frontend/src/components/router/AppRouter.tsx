@@ -15,6 +15,7 @@ import ResponsiveColumns from '../columns/ResponsiveColumns';
 import LoginGroup from '../login/LoginGroup';
 import NotFound from '../error/NotFound';
 import ItemsHome from '../manager/ItemsHome';
+import WaiterManagmentHome from '../manager/waiters/WaiterManagmentHome';
 // import HomePage from './components/HomePage';
 // import AboutPage from './components/AboutPage';
 // import ExampleComp from './components/Example';
@@ -32,7 +33,8 @@ const { id } = useParams();
           <Routes>
               
               <Route element={<PrivateManagerRoute allowedRoles={[UserTypes.MANAGER]}/>}>
-                <Route path="/" element={<ItemsHome />} />
+                {/* <Route path="/" element={} /> */}
+                <Route path="/home/manager/:id/waiters" element={<WaiterManagmentHome />} />
                 <Route path="/home/manager/:id" element={<ItemsHome />} />
 
               </Route>

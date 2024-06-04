@@ -4,14 +4,14 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 
 import Row from "react-bootstrap/Row";
-import InfiniteMenu from '../itemCard/InfiniteMenu';
-import CategorySelector from '../selector/CategorySelector';
-import "./columns.css";
+import "../columns.css";
 import { useNavigate, useParams } from 'react-router-dom';
-import AddItemForm from './AddItemForm';
-import { MenuItemType } from '../../models/menuItemType';
-import useAuth from '../../hooks/useAuth';
+import { MenuItemType } from '../../../models/menuItemType';
+import useAuth from '../../../hooks/useAuth';
 import styled from 'styled-components';
+import Waiters from './Waiters';
+import AddWaiterForm from './AddWaiterForm';
+
 const ResponsiveContainer = styled(Container)`
   width: 100%;
   @media (min-width: 992px) {  // This is for 'lg' breakpoint
@@ -19,7 +19,7 @@ const ResponsiveContainer = styled(Container)`
   }
 `;
 
-function ItemsHome() {
+function WaiterManagmentHome() {
     const navigate = useNavigate();
     const {auth} = useAuth();
     const { id } = useParams<{ id: string }>();
@@ -39,13 +39,12 @@ function ItemsHome() {
       <Row>
         <Col className="col-12 col-lg-4">
           <div className="shadow-lg inner-columns rounded">
-            <AddItemForm managerId={parseInt(id as string , 10)}/>
+            <AddWaiterForm managerId={parseInt(id as string , 10)}/>
           </div>
         </Col>
         <Col className="col-12 col-lg-8">
           <div className="shadow-lg inner-columns rounded">
-            <CategorySelector onSelectCategory={setCategory}/>
-            <InfiniteMenu id={auth.restaurantId} category={category}/>
+            <Waiters id={auth.id}/>
           </div>
         </Col>
       </Row>
@@ -54,4 +53,4 @@ function ItemsHome() {
   );  
 }
 
-export default ItemsHome;
+export default WaiterManagmentHome;

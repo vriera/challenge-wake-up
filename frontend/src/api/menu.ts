@@ -40,9 +40,26 @@ export async function getItems( p : {managerId:number , page?:number , category?
     let url = `/menu/${p.managerId}?page=${page}`;
     console.log("getting items" )
     if(p.category && p.category !== MenuItemType.ALL)
-        url = url.concat(`&filter=${p.category}`)
+        url=url.concat(`&filter=${p.category}`)
     console.log(url)
     const res = await api.get(url);
     console.log(res);
+    return res.data;
+}
+export type AddItemParams = {
+    name: string,
+    description: string,
+    price: number,
+    type: MenuItemType
+}
+
+export async function addItem(p: AddItemParams , managerId:number){
+    const res = await api.post(`/menu/${managerId}` , p);
+    return res.data;
+}
+
+
+export async function removeItem(itemId: number , managerId:number){
+    const res = await api.delete(`/menu/${managerId}/item/${itemId}`);
     return res.data;
 }
