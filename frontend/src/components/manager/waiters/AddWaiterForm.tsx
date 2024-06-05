@@ -42,7 +42,7 @@ const AddWaiterForm = ({ managerId }: { managerId: number }) => {
 
     setName("");
     // Show success message
-    setSuccessMessage(`Item: ${name} added successfully!`);
+    setSuccessMessage(`Waiter: ${name} added successfully!`);
 
     // Hide success message after 3 seconds
     setTimeout(() => {
@@ -65,7 +65,7 @@ const AddWaiterForm = ({ managerId }: { managerId: number }) => {
             variant="danger"
             onClose={() => setShow(false)}
             dismissible>
-              Error adding a waiter. Name must be unique
+              Error adding a waiter. Name must be unique.
           </Alert>
         ) : (
           <div />
