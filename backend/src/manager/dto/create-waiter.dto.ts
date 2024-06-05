@@ -1,9 +1,7 @@
-import { IsDefined, IsNotEmpty } from "class-validator"
+import { IsDefined, IsNotEmpty } from 'class-validator';
 
-export class CreateWaiterDTO{
-    
-    @IsDefined()
-    @IsNotEmpty()
-    name: string;
-    
+export class CreateWaiterDTO {
+  @IsDefined()
+  @IsNotEmpty()
+  name: string;
 }

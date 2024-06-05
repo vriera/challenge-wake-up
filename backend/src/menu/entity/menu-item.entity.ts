@@ -1,10 +1,16 @@
-
 import { Manager } from 'src/manager/entity/manager.entity';
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, Unique, DeleteDateColumn , } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+  Unique,
+  DeleteDateColumn,
+} from 'typeorm';
 import { MenuItemType } from '../enums/menu-item-type.enum';
 import { ColumnNumericTransformer } from './transformers/numeric.transformer';
 
-@Unique(["name", "manager"])
 @Entity()
 export class MenuItem {
   @PrimaryGeneratedColumn()
@@ -20,14 +26,12 @@ export class MenuItem {
   @JoinColumn({ name: 'managerId' })
   manager: Manager;
 
-
-  @Column("decimal", {scale: 2  , transformer: new ColumnNumericTransformer()})
+  @Column('decimal', { scale: 2, transformer: new ColumnNumericTransformer() })
   price: number;
 
   @Column()
   type: MenuItemType;
 
-  @DeleteDateColumn({select:false})
+  @DeleteDateColumn({ select: false })
   deletedAt?: Date;
 }
-

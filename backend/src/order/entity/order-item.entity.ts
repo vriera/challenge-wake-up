@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Order } from './order.entity';
 import { MenuItem } from 'src/menu/entity/menu-item.entity';
 
@@ -7,12 +13,12 @@ export class OrderItem {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Order, order => order.items)
+  @ManyToOne(() => Order, (order) => order.items)
   @JoinColumn({ name: 'orderId' })
   order: Order;
 
   @ManyToOne(() => MenuItem)
-  @JoinColumn({ name: 'itemId'})
+  @JoinColumn({ name: 'itemId' })
   menuItem: MenuItem;
 
   @Column('int')

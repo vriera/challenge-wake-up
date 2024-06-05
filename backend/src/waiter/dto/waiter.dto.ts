@@ -1,8 +1,6 @@
-import { ManagerDTO } from "src/manager/dto/manager.dto";
-
+import { ManagerDTO } from 'src/manager/dto/manager.dto';
 
 export class WaiterDto {
-
   id?: number;
 
   name: string;
@@ -10,5 +8,4 @@ export class WaiterDto {
   token: string;
 
   managerId: number;
-
 }

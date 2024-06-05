@@ -12,23 +12,29 @@ import { LocalTokenStrategy } from './strategies/local-waiter.strategy';
 
 @Module({
   imports: [
-    forwardRef( () => ManagerModule) ,
+    forwardRef(() => ManagerModule),
     JwtModule.register({
-        global: true,
-        secret: jwtConstants.secret,
-        signOptions: { expiresIn: '100y' },
-      }),
+      global: true,
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '100y' },
+    }),
     PassportModule,
-],
+  ],
   providers: [
-    AuthService, 
+    AuthService,
     JwtStrategy,
     LocalStrategy,
     LocalTokenStrategy,
     OnlyManagerGuard,
-    JwtAuthGuard
+    JwtAuthGuard,
   ],
-  exports: [PassportModule , JwtModule , OnlyManagerGuard , JwtAuthGuard , AuthService],
-  controllers: [AuthController]
+  exports: [
+    PassportModule,
+    JwtModule,
+    OnlyManagerGuard,
+    JwtAuthGuard,
+    AuthService,
+  ],
+  controllers: [AuthController],
 })
 export class AuthModule {}

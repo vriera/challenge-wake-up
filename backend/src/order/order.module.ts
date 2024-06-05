@@ -8,9 +8,9 @@ import { ManagerModule } from 'src/manager/manager.module';
 import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
-  imports: [DatabaseModule , MenuModule , ManagerModule , AuthModule ],
+  imports: [DatabaseModule, MenuModule, ManagerModule, AuthModule],
   controllers: [OrderController],
-  providers: [...orderProviders,OrderService],
-  exports: [OrderService]
+  providers: [...orderProviders, OrderService],
+  exports: [OrderService],
 })
 export class OrderModule {}

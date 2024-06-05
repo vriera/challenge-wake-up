@@ -6,10 +6,8 @@ import { AuthModule } from '../auth/auth.module';
 import { WaiterModule } from '../waiter/waiter.module';
 
 @Module({
-  imports: [DatabaseModule ,  forwardRef( () => AuthModule) , WaiterModule],
-  providers: [
-    ...managerProviders,
-    ManagerService],
-  exports: [ManagerService]
+  imports: [DatabaseModule, forwardRef(() => AuthModule), WaiterModule],
+  providers: [...managerProviders, ManagerService],
+  exports: [ManagerService],
 })
 export class ManagerModule {}

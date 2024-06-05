@@ -7,11 +7,10 @@ import { menuProviders } from './menu.providers';
 import { ManagerModule } from 'src/manager/manager.module';
 import { AuthService } from 'src/auth/auth.service';
 
-
 @Module({
-  imports: [DatabaseModule , AuthModule , ManagerModule],
-  providers: [...menuProviders ,MenuService ],
+  imports: [DatabaseModule, AuthModule, ManagerModule],
+  providers: [...menuProviders, MenuService],
   controllers: [MenuController],
-  exports: [MenuService]
+  exports: [MenuService],
 })
 export class MenuModule {}

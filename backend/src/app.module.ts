@@ -10,7 +10,7 @@ import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [AuthModule, ManagerModule, MenuModule, WaiterModule, OrderModule],
-  controllers: [AppController, ManagerController],
+  controllers: [ ManagerController],
   providers: [AppService],
 })
 export class AppModule {}
