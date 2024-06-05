@@ -3,7 +3,7 @@ version: "3.8"
 services:
   backend:
     container_name: backend
-    image: backend:0.0.1
+    image: vriera/backend:latest
     restart: always
     hostname: "backend"
     environment: 
@@ -33,7 +33,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
       
   nginx:
-    image: custom-nginx-val:0.0.1
+    image: vriera/nginx-spa:latest
     container_name: nginx_container
     ports:
       - "80:80"
