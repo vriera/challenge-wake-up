@@ -55,7 +55,7 @@ function DropdownNav() {
         </Dropdown.Toggle>
             
         <Dropdown.Menu>
-        <Dropdown.Item href="/waiter/menu">Take an order</Dropdown.Item>
+          <Dropdown.Item href="/waiter/menu">Take an order</Dropdown.Item>
           <Dropdown.Item href="/waiter/orders">Your orders</Dropdown.Item>
           <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
         </Dropdown.Menu>

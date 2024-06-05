@@ -66,7 +66,7 @@ const MenuItemCard = ({ item , isManager , managerId , isWaiter}: { item: MenuIt
                             </Col>
                             <Col className="col-3  d-flex flex-column justify-content-end align-items-end p-0 h-100">
                                 <h6>
-                                    {item.price} $
+                                    $ {item.price}
                                 </h6>
                                 
                                 { isWaiter && <MenuItemOrderHandler item={item}></MenuItemOrderHandler> }

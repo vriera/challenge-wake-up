@@ -26,7 +26,7 @@ export const AuthProvider : React.FC<AuthProviderProps> = ({children}) => {
         if(!token)
             return {}
         const decoded = jwtDecode(token) as JWTPayload;
-        return{token:token , role: decoded.type, id:decoded.sub , name:decoded.username , restaurantId:decoded.restaurantId}
+        return {token:token , role: decoded.type, id:decoded.sub , name:decoded.username , restaurantId:decoded.restaurantId}
     });
 
     useEffect(() => {

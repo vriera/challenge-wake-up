@@ -55,7 +55,7 @@ function LoginGroup() {
               </Card.Body>
             </div>
             <Card.Footer>
-              <small className="text-muted">Login into your restaurant with the provided</small>
+              <small className="text-muted">Login into your restaurant with the provided Token</small>
             </Card.Footer>
           </Card>
         </CardGroup>

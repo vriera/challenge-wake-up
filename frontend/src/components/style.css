@@ -1,11 +1,36 @@
+:root {
+    --font-size: 8rem;
+  }
+@media (max-width: 990px) {
+    :root {
+      --font-size: 5rem;
+    }
+  }
 
+  
+
+@media (max-width: 700px) {
+:root {
+--font-size: 5rem;
+}
+}
+@media (max-width: 574px) {
+    :root {
+    --font-size: 4rem;
+    }
+}
 
 html .text-shadow {
     text-shadow: 2px 3px 5px rgba(0,0,0,0.5);
 
 }
-html .home-title {
-    font-size: 8rem;
+
+
+.home-title {
+
+    
+    font-size: var(--font-size);
+    
 }
 
 html .inner-columns {

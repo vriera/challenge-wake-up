@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Container from "react-bootstrap/Container";
+import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { MenuItemType } from "../../models/menuItemType";
@@ -15,6 +16,9 @@ const ResponsiveContainer = styled(Container)`
 
 const AddItemForm = ({managerId} : {managerId:number}) => {
   const queryClient = useQueryClient();
+
+  const [show, setShow] = useState(false);
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -37,24 +41,27 @@ const AddItemForm = ({managerId} : {managerId:number}) => {
         price: parseFloat(price),
         type: category as MenuItemType,
       }
+  try {
+      console.log("Submitting", p);
+      await addItem(p ,managerId );
+      queryClient.invalidateQueries( {
+        predicate: (query) =>
+          query.queryKey[0] === 'menuItems' && query.queryKey[1] === managerId,
+      })
+      setName("");
+      setDescription("");
+      setPrice("");
+      setCategory("");
+      // Show success message
+      setSuccessMessage(`Item: ${name} added successfully!`);
 
-    console.log("Submitting", p);
-    await addItem(p ,managerId );
-    queryClient.invalidateQueries( {
-      predicate: (query) =>
-        query.queryKey[0] === 'menuItems' && query.queryKey[1] === managerId,
-    })
-    setName("");
-    setDescription("");
-    setPrice("");
-    setCategory("");
-    // Show success message
-    setSuccessMessage(`Item: ${name} added successfully!`);
-
-    // Hide success message after 3 seconds
-    setTimeout(() => {
-    setSuccessMessage("");
-    }, 3000);
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+      setSuccessMessage("");
+      }, 3000);
+    }catch(e){
+      setShow(true);
+    }
     setLoading(false)
     // Here you can add code to send the form data to the server
   };
@@ -62,6 +69,17 @@ const AddItemForm = ({managerId} : {managerId:number}) => {
   return (
     <ResponsiveContainer className="mb-2 p-3 text-white">
       <h2>Add a new item!</h2>
+      {show ? (
+          <Alert
+            className="mb-2"
+            variant="danger"
+            onClose={() => setShow(false)}
+            dismissible>
+              Error adding an item
+          </Alert>
+        ) : (
+          <div />
+        )}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>Item name</Form.Label>

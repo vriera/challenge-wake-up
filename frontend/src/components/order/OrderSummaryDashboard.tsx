@@ -54,10 +54,10 @@ const OrderSummaryDashboard = ({ orderId, managerId }: { orderId: number, manage
         })}
         <hr className="mb-2"></hr>
         <Row className="pb-2">
-            <Col className="align-items-center"><div className="m-1">Total: {order && order.items && order.items.reduce((acum, item) => {
+            <Col className="align-items-center"><div className="m-1">Total: ${order && order.items && order.items.reduce((acum, item) => {
                 return item.menuItem.price * item.itemCount
             }
-                , 0)}$</div></Col>
+                , 0)}</div></Col>
         </Row>
         <Row className="pb-2">
             <Col className="align-items-center"><div className="m-1"> {convertDateString(order.created_at) }</div></Col>

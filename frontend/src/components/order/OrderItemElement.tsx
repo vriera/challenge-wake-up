@@ -29,8 +29,8 @@ export const OrderItemElement = ({ orderItem, managerId }: { orderItem: OrderIte
             <Row >
                 <Col className="col-1">{orderItem.amount}</Col>
                 <Col >{item.name}</Col>
-                <Col className="col-2">{item.price} $</Col>
-                <Col className="col-3">{item.price * orderItem.amount} $</Col>
+                <Col className="col-2">$ {item.price}</Col>
+                <Col className="col-3">$ {item.price * orderItem.amount}</Col>
             </Row>
         }
     </>

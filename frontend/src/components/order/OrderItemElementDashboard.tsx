@@ -17,8 +17,8 @@ export const OrderItemElementDashboard = ({ orderItem, managerId }: { orderItem:
             <Row >
                 <Col className="col-1">{orderItem.itemCount}</Col>
                 <Col >{item.name}</Col>
-                <Col className="col-2">{item.price} $</Col>
-                <Col className="col-3">{item.price * orderItem.itemCount} $</Col>
+                <Col className="col-2">$ {item.price}</Col>
+                <Col className="col-3">$ {item.price * orderItem.itemCount}</Col>
             </Row>
         
     </>

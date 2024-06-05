@@ -1,3 +1,4 @@
+cd..
 docker-compose down
 cd scripts
 ./build.sh

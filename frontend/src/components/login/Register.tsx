@@ -40,7 +40,6 @@ const RegisterManager = () => {
       setLoading(false);
 
     } else {
-      setLoading(false);
         try {
           let p: RegisterManagerParams = {
             username: inputUsername,
@@ -58,13 +57,13 @@ const RegisterManager = () => {
               console.log("some error" , e);
             }
           navigate(
-            '/'
+            '/manager/menu'
           );
         } catch (e) {
           setRegError(true);
           console.log(e)
         }
-
+        setLoading(false);
     };
   }
     function delay(ms: number) {
@@ -170,7 +169,7 @@ const RegisterManager = () => {
         </Form.Group> */}
           {!loading ? (
             <Button onClick={handleSubmit} className="w-100" variant="primary" type="submit">
-              Sing up
+              Sign up
             </Button>
           ) : (
             <Button className="w-100" variant="primary" type="submit" disabled>

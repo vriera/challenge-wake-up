@@ -1,2 +1,2 @@
-cd ../frontend && ./build.sh
-cd .. && docker build -t "custom-nginx-val:0.0.1" .
+cd ../frontend && yarn run build
+cd .. && docker build -t "nginx-spa:0.0.1" .

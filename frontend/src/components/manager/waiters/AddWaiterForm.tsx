@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
+import Alert from "react-bootstrap/Alert"
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { addWaiter, AddWaiterParams } from "../../../api/waiters"
@@ -14,6 +15,8 @@ const ResponsiveContainer = styled(Container)`
 
 const AddWaiterForm = ({ managerId }: { managerId: number }) => {
   const queryClient = useQueryClient();
+  const [show, setShow] = useState(false);
+
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
@@ -34,6 +37,7 @@ const AddWaiterForm = ({ managerId }: { managerId: number }) => {
       })
     } catch (e) {
       console.log(e)
+      setShow(true)
     }
 
     setName("");
@@ -55,6 +59,17 @@ const AddWaiterForm = ({ managerId }: { managerId: number }) => {
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formName">
           <Form.Label>Waiter name</Form.Label>
+          {show ? (
+          <Alert
+            className="mb-2"
+            variant="danger"
+            onClose={() => setShow(false)}
+            dismissible>
+              Error adding a waiter. Name must be unique
+          </Alert>
+        ) : (
+          <div />
+        )}
           <Form.Control
             type="text"
             placeholder="Enter your waiter name"

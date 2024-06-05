@@ -50,12 +50,12 @@ const OrderSummary = ({ waiterId, managerId }: { waiterId: number, managerId: nu
         })}
         <hr className="mb-2"></hr>
         <Row className="pb-2">
-            <Col className="align-items-center"><div className="m-1">Total: {orderItems.reduce((acum, item) => {
+            <Col className="align-items-center"><div className="m-1">Total: ${orderItems.reduce((acum, item) => {
                 if (item.price)
                     return acum + item.price * item.amount
                 return acum
             }
-                , 0)}$</div></Col>
+                , 0)}</div></Col>
             <Col className=" d-flex flex-column justify-content-end align-items-end"><Button className="small-font" onClick={onOrderFinish} disabled={orderItems?.length <= 0 || submitting}>Finish Order</Button></Col>
         </Row>
     </ResponsiveContainer>
