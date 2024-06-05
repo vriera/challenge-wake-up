@@ -14,6 +14,17 @@ export async function loginManager(managerCredentials: {username:string , passwo
     return res;
 }
 
+export type RegisterManagerParams = {
+    username:string,
+    password:string,
+    email:string,
+    restaurant:string
+}
+
+
+export async function registerManager( p : RegisterManagerParams){
+    return await api.post('/manager' , p);
+}
 
 export async function loginWaiter(waiterCredentials: {restaurant:string , token:string}){
     console.log("loggin in, waiter")

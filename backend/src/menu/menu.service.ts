@@ -30,6 +30,8 @@ export class MenuService {
         return await this.menuRepository.save(menuItem);
 
     }
+
+    
     
 async updateItem(id: number, dto: PatchMenuItemDTO): Promise<MenuItem> {
     // Retrieve the existing menu item
@@ -64,11 +66,18 @@ async updateItem(id: number, dto: PatchMenuItemDTO): Promise<MenuItem> {
         console.log("where" , where)
         const [result , total ] = await this.menuRepository.findAndCount( {
             where: where , order: { type: "ASC" , id:"DESC"},
-
             take,
             skip
         })
         return new Paginated<MenuItem>(result,total,take);
+    }
+
+    async isMenuItem(managerId:number , itemId: number) : Promise<boolean> {
+        const manager = {id: managerId} as Manager;
+       
+        return await this.menuRepository.exists( {
+            where: {manager:manager , id:itemId} , 
+        })
     }
 
     // async getDeletedMenu(managerId: number , pageNumber: number  ) : Promise<Paginated<MenuItem>>{

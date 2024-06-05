@@ -45,17 +45,17 @@ const Waiters : React.FC<WaitersParams> = ({id})  => {
     return    <>
      { status === "pending" && 
         <ResponsiveContainer className="pb-2 p-0 p-md-2 p-r-0" > 
-             <h2 className="align-content-center text-white">Waiters: </h2>
+             <h2 className="m-1 text-white">Waiters: </h2>
              <hr></hr>
             {Array.from({ length: 4 }, (_, index) => (<WaiterCardPlaceholder/>))}
-           </ResponsiveContainer  >
+        </ResponsiveContainer  >
         }
         { status === "error" && <div>{error.message}</div> }
         {status !== "pending" && status !== "error" &&
             <div>
 
                 <ResponsiveContainer className="pb-2 p-0 p-md-2 p-r-0" >
-                    <h2 className="align-content-center text-white">Waiters: </h2>
+                    <h2 className="m-1 text-white">Waiters: </h2>
                     <hr></hr>
                     { !data || data.pages.every(page => page.data.length === 0) && <>
                     <Card className="m-3 shadow-lg">

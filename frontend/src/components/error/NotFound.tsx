@@ -1,9 +1,9 @@
-import React from 'react';
 import Container from "react-bootstrap/Container"
 import Card from "react-bootstrap/Card"
 import styled from 'styled-components';
-import "./error.css";
 import errorImage from "../../assets/images/404.jpg";
+import "../style.css";
+
 const ResponsiveContainer = styled(Container)`
   @media (min-width: 992px) {  // This is for 'lg' breakpoint
     max-width: 992px;

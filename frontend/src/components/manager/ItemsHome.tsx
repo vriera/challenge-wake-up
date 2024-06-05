@@ -6,12 +6,13 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import InfiniteMenu from '../itemCard/InfiniteMenu';
 import CategorySelector from '../selector/CategorySelector';
-import "./columns.css";
+import "../style.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import AddItemForm from './AddItemForm';
 import { MenuItemType } from '../../models/menuItemType';
 import useAuth from '../../hooks/useAuth';
 import styled from 'styled-components';
+import RestaurantName from '../RestaurantName';
 const ResponsiveContainer = styled(Container)`
   width: 100%;
   @media (min-width: 992px) {  // This is for 'lg' breakpoint
@@ -20,26 +21,18 @@ const ResponsiveContainer = styled(Container)`
 `;
 
 function ItemsHome() {
-    const navigate = useNavigate();
     const {auth} = useAuth();
-    const { id } = useParams<{ id: string }>();
     const [category , setCategory ] = useState(MenuItemType.ALL);
-    useEffect( () => {
-      console.log(id)
-      if(parseInt(id as string , 10) !== auth.restaurantId){
-        console.log("auth")
-        console.log(id , parseInt(id as string , 10));
-        // navigate('/404')
-      }
-    }, [])
+    const id = auth.id;
     useEffect( () => {}, [category])
    
   return (
     <ResponsiveContainer className= "mt-2 p-0 p-md-2">
+      <RestaurantName/>
       <Row>
         <Col className="col-12 col-lg-4">
           <div className="shadow-lg inner-columns rounded">
-            <AddItemForm managerId={parseInt(id as string , 10)}/>
+            <AddItemForm managerId={id}/>
           </div>
         </Col>
         <Col className="col-12 col-lg-8">

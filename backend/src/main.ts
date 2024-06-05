@@ -11,6 +11,7 @@ async function bootstrap() {
   .setTitle('TableScript API')
   .setDescription('REST API for the TablesScript webpage')
   .setVersion('1.0')
+  .setBasePath('/spec')
   .build();
   const document = SwaggerModule.createDocument(app, config); 
   app.enableCors();

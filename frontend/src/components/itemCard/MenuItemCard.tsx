@@ -1,15 +1,20 @@
-import { MenuItem } from "../../models/menuItem";
+import {useState} from "react"
+import { useQueryClient } from "@tanstack/react-query";
+
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import PlaceholderImage from "../../assets/images/placeholder.png";
+
+import "./item.css"
+
+import { MenuItem } from "../../models/menuItem";
 import Trash from "../../assets/images/trash.webp"
 import {removeItem} from "../../api/menu"
-import {useState} from "react"
-import "./item.css"
-import { useQueryClient } from "@tanstack/react-query";
-const MenuItemCard = ({ item , isManager , managerId }: { item: MenuItem , isManager?: boolean , managerId?: number}) => {
+import MenuItemOrderHandler from "./MenuItemOrderHandler";
+
+const MenuItemCard = ({ item , isManager , managerId , isWaiter}: { item: MenuItem , isManager?: boolean , managerId?: number , isWaiter?: boolean}) => {
     const queryClient = useQueryClient();
     const [loading , setLoading] = useState(false);
     const onDeleteItem = async () => {
@@ -40,13 +45,13 @@ const MenuItemCard = ({ item , isManager , managerId }: { item: MenuItem , isMan
                     <Col className="col-4 col-md-4 col-lg-4 p-r-0">
                         <Card.Img src={PlaceholderImage}  />
                     </Col>
-                    <Col className="p-1 d-flex flex-column flex-grow-1 p-r-1" >
+                    <Col className="p-1 d-flex flex-column flex-grow-1 me-1 me-lg-0" >
                         <Row className="justify-content-between">
                             <Col className="col-8">
                                 <Card.Title>{item.name}</Card.Title>
                             </Col>
-                            <Col className="col-2 p-0 align-content-right m-r-min">
-                                <Button variant="danger p-0 " onClick={onDeleteItem}  disabled={loading} ><img src={Trash} className="p-0 m-0 trash-icon "/></Button>
+                            <Col className="col-2 p-0 align-content-right me-2 me-md-1">
+                                {isManager && <Button variant="danger p-0 " onClick={onDeleteItem}  disabled={loading} ><img src={Trash} className="p-0 m-0 trash-icon "/></Button> }
                             </Col>
                         </Row>
                         <Row className="flex-grow-1">
@@ -56,13 +61,15 @@ const MenuItemCard = ({ item , isManager , managerId }: { item: MenuItem , isMan
                         <Row className="p-0 align-items-en mt-auto " >
                             <Col className="col-8 p">
                                 <Card.Text className="description-container">
-                                    {item.description} asdfasdfasdfasdfasfddafasdfadsfasd asdfa
+                                    {item.description}
                                 </Card.Text>
                             </Col>
-                            <Col className="col-3 d-flex flex-column justify-content-end align-items-end p-0 h-100">
-                                <div>
+                            <Col className="col-3  d-flex flex-column justify-content-end align-items-end p-0 h-100">
+                                <h6>
                                     {item.price} $
-                                </div>
+                                </h6>
+                                
+                                { isWaiter && <MenuItemOrderHandler item={item}></MenuItemOrderHandler> }
                             </Col>
                         </Row>
                     </Col>

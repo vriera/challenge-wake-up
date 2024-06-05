@@ -4,8 +4,6 @@ import { JwtService } from '@nestjs/jwt';
 import { JWTPayload, UserType } from './models/models';
 
 @Injectable()
-
-
 export class AuthService {
    constructor(private managerService: ManagerService , private jwtService: JwtService) {}
 
@@ -25,10 +23,13 @@ export class AuthService {
   }
   async signInWaiter(restaurant: string, token: string): Promise<any> {
     const manager = await this.managerService.findByRestaurant(restaurant);
+
     if(!manager)
         throw new UnauthorizedException();
 
+    
     const waiter = await this.managerService.findWaiterByToken(manager.id , token);
+    console.log("found waiter" , waiter)
     if(!(waiter && waiter.token === token))
       throw new UnauthorizedException();
 

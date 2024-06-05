@@ -1,0 +1,7 @@
+.eslintrc.js
+.gitignore
+.prettierrc
+dist
+node_modules
+README.md
+yarn-error.log

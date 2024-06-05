@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert  from "react-bootstrap/Alert";
+
 import "./login.css";
 import Logo from "../../assets/images/manager-logo.png";
 import useAuth from "../../hooks/useAuth";
@@ -37,15 +40,17 @@ const LoginManager = () => {
           }catch(e){
             console.log("some error" , e);
           }
-    }catch(e){
-        setShow(true);
 
+
+          navigate( 
+            '/manager/menu'
+          );
+    }catch(e){
+         setLoading(false);
+        setShow(true);
     }
  
-    setLoading(false);
-    navigate( 
-      '/'
-    );
+   
   };
 
 //   const handlePassword = () => {};

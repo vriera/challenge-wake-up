@@ -5,7 +5,8 @@ import { UserTypes } from '../../models/userTypes';
 import DropdownNav from './DropdownNav';
 
 const MyNavbar = () => {
-
+  const {auth} = useAuth()
+  
   return (
     <Navbar variant="dark shadow-md" >
       <Container>

@@ -49,10 +49,10 @@ export class WaiterService {
 
     async findWaiterByToken(managerId: number, token: string) : Promise<Waiter>{
         const manager =  {id: managerId} as Manager;
-        return await this.waiterRepository.findOneBy({manager , token:token});
+        return await this.waiterRepository.findOne({where: {token:token , manager:manager } ,relations: ["manager"]} );
     }
 
     async getWaiter(waiterId: number) : Promise<Waiter>{
-       return this.waiterRepository.findOneBy({id:waiterId});
+       return this.waiterRepository.findOne({where: {id:waiterId } ,relations: ["manager"]} );
     }
 }

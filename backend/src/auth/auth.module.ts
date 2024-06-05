@@ -28,7 +28,7 @@ import { LocalTokenStrategy } from './strategies/local-waiter.strategy';
     OnlyManagerGuard,
     JwtAuthGuard
   ],
-  exports: [PassportModule , JwtModule , OnlyManagerGuard , JwtAuthGuard ],
+  exports: [PassportModule , JwtModule , OnlyManagerGuard , JwtAuthGuard , AuthService],
   controllers: [AuthController]
 })
 export class AuthModule {}

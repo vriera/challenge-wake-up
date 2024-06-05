@@ -17,7 +17,6 @@ export class ManagerController {
     }
 
     @Get(':id')
-    @UseGuards(JwtAuthGuard , OnlyManagerGuard)
     get(@Param("id") id:number){
         return this.managerService.findById(id);
     }

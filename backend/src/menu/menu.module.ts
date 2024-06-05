@@ -5,11 +5,13 @@ import { DatabaseModule } from '../database/database.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { menuProviders } from './menu.providers';
 import { ManagerModule } from 'src/manager/manager.module';
+import { AuthService } from 'src/auth/auth.service';
 
 
 @Module({
   imports: [DatabaseModule , AuthModule , ManagerModule],
-  providers: [...menuProviders ,MenuService],
-  controllers: [MenuController]
+  providers: [...menuProviders ,MenuService ],
+  controllers: [MenuController],
+  exports: [MenuService]
 })
 export class MenuModule {}

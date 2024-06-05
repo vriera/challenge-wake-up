@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Alert  from "react-bootstrap/Alert";
 import "./login.css";
 import {  loginWaiter } from "../../api/auth";
 import Logo from "../../assets/images/waiter.png";
@@ -31,15 +33,16 @@ const LoginWaiter = () => {
             const decoded = (jwtDecode(token) as JWTPayload)
             setAuth({token:token , role: decoded.type, id:decoded.sub , name:decoded.username , restaurantId:decoded.restaurantId});
         }
+        navigate( 
+          '/waiter/menu'
+        );
     }catch(e){
         setShow(true);
 
     }
  
     setLoading(false);
-    navigate( 
-      '/'
-    );
+    
   };
 
 //   const handlePassword = () => {};

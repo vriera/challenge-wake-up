@@ -13,6 +13,7 @@ export type InfiniteItemResponse ={
         data: MenuItem[]
     
 }
+
 export async function getItemsInfinite({pageParam } : {pageParam:number }): 
 Promise<InfiniteItemResponse>{
     const res = await getItems({managerId: 2 , page: pageParam})
@@ -57,6 +58,12 @@ export async function addItem(p: AddItemParams , managerId:number){
     const res = await api.post(`/menu/${managerId}` , p);
     return res.data;
 }
+
+export async function getItem(itemId: number , managerId:number){
+    const res = await api.get(`/menu/${managerId}/item/${itemId}`);
+    return res.data;
+}
+
 
 
 export async function removeItem(itemId: number , managerId:number){

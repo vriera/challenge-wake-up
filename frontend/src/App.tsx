@@ -10,6 +10,7 @@ import AppRouter from './components/router/AppRouter';
 import ThemeProvider from 'react-bootstrap/ThemeProvider'
 import './override.scss'
 import './dark-theme.css';  
+import OrderProvider from './context/OrderProvider';
 
 const queryClient = new QueryClient()
 
@@ -21,7 +22,9 @@ function App() {
 
     <QueryClientProvider client={queryClient}>
         <AuthProvider>
-          <AppRouter></AppRouter>
+          <OrderProvider>
+            <AppRouter></AppRouter>
+          </OrderProvider>
         </AuthProvider>
       </QueryClientProvider>
   );

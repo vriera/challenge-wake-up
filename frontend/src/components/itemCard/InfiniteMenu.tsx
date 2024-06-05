@@ -1,17 +1,25 @@
 
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card"
+
+import styled from "styled-components";
+
 import { useInfiniteQuery } from "@tanstack/react-query";
+
+import useAuth from "../../hooks/useAuth";
+
+import MenuItemCard from "./MenuItemCard";
+import MenuItemCardPlaceholer from "./MenuItemCardPlaceholder";
+
 import { getItemsInfinite, getQueryFnGetItemsInfinite } from "../../api/menu";
 import { InfiniteItemResponse } from "../../api/menu";
-import { useInView } from "react-intersection-observer";
-import { useEffect } from "react";
-import Button from "react-bootstrap/Button";
-import MenuItemCard from "./MenuItemCard";
-import Container from "react-bootstrap/Container";
-import styled from "styled-components";
-import MenuItemCardPlaceholer from "./MenuItemCardPlaceholder";
 import { MenuItemType } from "../../models/menuItemType";
-import Card from "react-bootstrap/Card"
-import useAuth from "../../hooks/useAuth";
+import { UserTypes } from "../../models/userTypes";
+
 const ResponsiveContainer = styled(Container)`
 width: 100%;
 @media (min-width: 992px) {  // This is for 'lg' breakpoint
@@ -29,14 +37,12 @@ const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
   
     const {auth} = useAuth();
     const { ref, inView } = useInView();
-
+   
     const { data, error, status, fetchNextPage, isFetchingNextPage } = useInfiniteQuery({
         queryKey: ['menuItems' , id , category],
         queryFn: getQueryFnGetItemsInfinite({id,category}),
         initialPageParam: 0,
         getNextPageParam: (lastPage: InfiniteItemResponse, allPages, lastPageParam) => lastPage.nextPage,
-
-
     })
     useEffect(
         () => {
@@ -76,8 +82,7 @@ const InfiniteMenu : React.FC<InfiniteMenuParams> = ({id,category})  => {
                         return <div key={page.currentPage}>
                             {
                                 page.data.map((item) => {
-                                    return <MenuItemCard item={item} isManager={true} managerId={auth.id}  ></MenuItemCard>
-
+                                    return <MenuItemCard item={item} isManager={auth.role === UserTypes.MANAGER} isWaiter={auth.role === UserTypes.WAITER} managerId={auth.id}  ></MenuItemCard>
 
                                 })
                             }

@@ -3,6 +3,8 @@ import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import PlaceholderImage from "../../../assets/images/waiter.png";
 import Refresh from "../../../assets/images/refresh.webp";
+import CopyClipboard from "../../../assets/images/copy.svg"
+
 import { useState } from "react"
 
 import { useQueryClient } from "@tanstack/react-query";
@@ -67,10 +69,15 @@ const WaiterCard = ({ waiter , managerId}: { waiter: Waiter ,managerId:number}) 
                             </Col>
                         </Row>
                         <Row className="p-0 align-items-end mt-auto " >
-                            <Col className="col-8 p">
+                            <Col className="col-8 ">
                                 <Card.Text className="description-container">
-                                    <Button variant="warning" className="p-0 m-1" onClick={onRefreshToken} disabled={loading} ><img src={Refresh} className=" p-0 m-0 icon" /></Button>
+                                    <Button variant="warning" className="p-0 m-1 me-2" onClick={onRefreshToken} disabled={loading} ><img src={Refresh} className=" p-0 m-0 icon" /></Button>
                                     <span className="bold">Token: </span>{waiter.token}
+                                    <Button variant="info" className="p-0 m-1 ms-2" onClick={()=> {
+                                        navigator.clipboard.writeText(waiter.token)
+                                        alert("Token copied to clipboard")
+                                        }} disabled={loading} ><img src={CopyClipboard} className=" p-0 m-0 icon" /></Button>
+
                                 </Card.Text>
                             </Col>
                         </Row>

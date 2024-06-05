@@ -7,6 +7,7 @@ import { Paginated } from 'src/commons/pagination.interface';
 import { PatchMenuItemDTO } from './dto/patch-menu-item.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { MenuItemType } from './enums/menu-item-type.enum';
+import { WaiterOrManagerGuard } from 'src/auth/guard/waiter-or-manager.guard';
 
 @ApiTags('menu')
 @Controller('menu')
@@ -30,7 +31,7 @@ export class MenuController {
 
 
 
-    @UseGuards(JwtAuthGuard, OnlyManagerGuard)
+    @UseGuards(JwtAuthGuard, WaiterOrManagerGuard)
     @Get('/:id')
     async getItems(@Param('id') id: number, @Query('page') page: number, @Query('filter') filter: MenuItemType): Promise<Paginated<MenuItem>> {
         try {
@@ -44,7 +45,7 @@ export class MenuController {
     }
 
 
-    @UseGuards(JwtAuthGuard, OnlyManagerGuard)
+    @UseGuards(JwtAuthGuard, WaiterOrManagerGuard)
     @Get('/:id/item/:itemId')
     async getItem(@Param('id') menuId: number, @Param('itemId') itemId: number): Promise<MenuItem> {
         return this.menuService.getMenuItem(menuId, itemId);

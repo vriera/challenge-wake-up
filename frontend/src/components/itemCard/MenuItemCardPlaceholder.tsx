@@ -1,15 +1,16 @@
-import { MenuItem } from "../../models/menuItem";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col"
 import Row from "react-bootstrap/Row"
 import PlaceHolder from "react-bootstrap/Placeholder"
 import PlaceholderImage from "../../assets/images/placeholder.png";
+import { MenuItem } from "../../models/menuItem";
+
 const MenuItemCardPlaceholer = () => {
 
 
     return <>
-                    <Card className="shadow-lg m-lg-3 m-md-2 m-0 mt-0 mb-1 p-0">
+                <Card className="shadow-lg m-lg-3 m-md-2 m-0 mt-0 mb-1 p-0">
             <Card.Body className="p-0 p-md-1 p-lg-2 custom-card-body">
                 <Row className="justify-content-center p-0 p-md-1">
                     <Col className="col-4 col-md-4 col-lg-4 p-r-0">

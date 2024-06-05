@@ -20,7 +20,28 @@ html .m-r-min {
   margin-right: 0.3em !important;
 }
 
+html .order-count-container {
+  border-color: var(--bs-primary) !important;
+  
+}
+html .small {
+  width: 1.25rem;
+  /* height: 25; */
+}
+html .order-amount {
+  /* min-width: 2rem;
+  max-width: 3rem; */
+  text-align: center; /* Center the quantity text horizontally */
+  flex-grow: 1; /* Allows the quantity div to take up the remaining space */
+  /* height: 25; */
+}
+
 .trash-icon{
+  max-width: 2rem;
+  max-height: 2rem;
+  object-fit: fill;
+}
+.icon{
   max-width: 2rem;
   max-height: 2rem;
   object-fit: fill;

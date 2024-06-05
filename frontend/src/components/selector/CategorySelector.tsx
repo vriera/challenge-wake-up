@@ -2,7 +2,6 @@ import { MenuItemType } from "../../models/menuItemType"
 import Tab from 'react-bootstrap/Tab';
 import Tabs from "react-bootstrap/Tabs";
 import TabContainer from 'react-bootstrap/TabContainer'
-import "./custom-tab-styles.css";
 const categories = Object.keys(MenuItemType);
 
 export type CategorySelectorParams ={

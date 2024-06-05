@@ -1,0 +1,9 @@
+{
+    "search.exclude": {
+        "": true,
+        "**/node_modules": false
+    },
+    "explorer.autoRevealExclude": {
+        "**/node_modules": false
+    }
+}

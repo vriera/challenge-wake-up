@@ -4,6 +4,7 @@ import Row from "react-bootstrap/Row"
 import PlaceHolder from "react-bootstrap/Placeholder"
 import PlaceholderImage from "../../../assets/images/waiter.png";
 import Refresh from "../../../assets/images/refresh.webp";
+import CopyClipboard from "../../../assets/images/copy.svg"
 import Button from "react-bootstrap/Button"
 const WaiterCardPlaceholer = () => {
   
@@ -31,9 +32,10 @@ const WaiterCardPlaceholer = () => {
                         </Row>
                         <Row className="p-0 align-items-en mt-auto " >
                             <Col className="col-8 p">
-                                    
                                     <PlaceHolder as={Card.Text} animation="glow">
-                                    <Button variant="warning" className="p-0 m-1" disabled={true}><img src={Refresh} className=" p-0 m-0 icon" /></Button>Token: <PlaceHolder xs={7} />{' '}
+                                    <Button variant="warning" className="p-0 m-1 me-2"  disabled={true} ><img src={Refresh} className=" p-0 m-0 icon" /></Button>
+                                    <span className="bold">Token: </span><PlaceHolder xs={2} />
+                                    <Button variant="info" className="p-0 m-1 ms-2" disabled={true} ><img src={CopyClipboard} className=" p-0 m-0 icon" /></Button>
                                     </PlaceHolder>
                             </Col>
                         </Row>

@@ -32,8 +32,9 @@ function DropdownNav() {
         </Dropdown.Toggle>
             
         <Dropdown.Menu>
-          <Dropdown.Item href={`/home/manager/${auth.restaurantId}`}>Profile</Dropdown.Item>
-          <Dropdown.Item href={`/home/manager/${auth.restaurantId}/waiters`}>Manage Waiters</Dropdown.Item>
+          <Dropdown.Item href={`/manager/menu`}>Menu</Dropdown.Item>
+          <Dropdown.Item href={`/manager/orders`}>Orders</Dropdown.Item>
+          <Dropdown.Item href={`/manager/waiters`}>Manage Waiters</Dropdown.Item>
           <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
@@ -54,7 +55,8 @@ function DropdownNav() {
         </Dropdown.Toggle>
             
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
+        <Dropdown.Item href="/waiter/menu">Take an order</Dropdown.Item>
+          <Dropdown.Item href="/waiter/orders">Your orders</Dropdown.Item>
           <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
