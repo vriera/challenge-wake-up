@@ -5,8 +5,7 @@ import { DatabaseModule } from '../database/database.module';
 
 @Module({
   imports: [DatabaseModule],
-  controllers: [WaiterController],
-  providers: [...waiterProviders],
+  providers: [...waiterProviders, WaiterService],
   exports: [WaiterService],
 })
 export class WaiterModule {}

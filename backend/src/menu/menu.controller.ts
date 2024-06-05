@@ -16,7 +16,6 @@ import { MenuService } from './menu.service';
 import { MenuItemDTO } from './dto/menu-item.dto';
 import { MenuItem } from './entity/menu-item.entity';
 import { Paginated } from 'src/commons/pagination.interface';
-import { PatchMenuItemDTO } from './dto/patch-menu-item.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { MenuItemType } from './enums/menu-item-type.enum';
 import { WaiterOrManagerGuard } from 'src/auth/guard/waiter-or-manager.guard';

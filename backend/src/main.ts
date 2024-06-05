@@ -8,17 +8,19 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
-    .setTitle('TableScript API')
-    .setDescription('REST API for the TablesScript webpage')
-    .setVersion('1.0')
-    .setBasePath('/spec')
-    .build();
+  .setTitle('Example API')
+  .setDescription('The example API description')
+  .setVersion('1.0')
+  .build();
+
   const document = SwaggerModule.createDocument(app, config);
+
+  // Change the Swagger path here
+  SwaggerModule.setup('/spec', app, document);
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   // app.useGlobalFilters(new TypeOrmExceptionFilter());
   // app.useGlobalFilters(new AllExceptionsFilter());
-  SwaggerModule.setup('api', app, document);
   await app.listen(3000);
 }
 bootstrap();

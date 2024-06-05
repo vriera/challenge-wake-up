@@ -15,7 +15,9 @@ import { OrderDto } from './dto/order.dto';
 import { OnlyWaiterGuard } from 'src/auth/guard/only-waiter.guard';
 import { Paginated } from 'src/commons/pagination.interface';
 import { Order } from './entity/order.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('order')
 @Controller('order')
 export class OrderController {
   constructor(private orderService: OrderService) {}
