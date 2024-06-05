@@ -11,6 +11,13 @@ Code of the challenge:
 * The SPA under the *frontend* folder.
 * Scripts for CI/CD under the *scripts* folder.
 
+To connecect to the application follow here:
+```
+https://ec2-52-15-207-50.us-east-2.compute.amazonaws.com/
+```
+It's expected to get some security error since the SSL certifacate is self-signed.
+
+
 ## Requirements
 
 - Docker (tested on v25.0.2)
