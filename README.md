@@ -12,6 +12,7 @@ Code of the challenge:
 * Scripts for CI/CD under the *scripts* folder.
 
 To connecect to the application follow here:
+COMMENT: DEPRECATED, this webpage is not deployed anymore
 ```
 https://ec2-52-15-207-50.us-east-2.compute.amazonaws.com/
 ```
